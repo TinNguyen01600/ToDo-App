@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import Form from "./Form";
-import Todo from "./todo";
+import Form from "./components/Form";
+import Todo from "./components/Todo";
+import Button from "@mui/material/Button";
 
 function App() {
 	// set up states
@@ -37,13 +38,14 @@ function App() {
 
 	return (
 		<>
-			<button
+			<Button
+				variant="contained"
 				onClick={() => {
 					setIsFormOpen(true);
 				}}
 			>
 				Add a new todo
-			</button>
+			</Button>
 			{isFormOpen && (
 				<Form
 					title={title}
@@ -58,7 +60,7 @@ function App() {
 			)}
 			{todoList.length > 0 && (
 				<div>
-					{todoList.map(todo => (
+					{todoList.map((todo) => (
 						<Todo todo={todo} key={todo.title} />
 					))}
 				</div>

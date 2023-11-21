@@ -25,16 +25,16 @@
 export default function Form(props) {
     return (
         <form id="todo-form">
-            <input type="text" value={props.title} name="title" placeholder='Title' onChange={props.handleTitleChange} />
-            <input type="text" value={props.deadline} name="deadline" placeholder='Deadline' onChange={props.handleDeadlineChange} />
-            <select value={props.status} onChange={props.handleStatusChange}>
+            <input id="title" type="text" value={props.title} name="title" placeholder='Title' onChange={props.handleTitleChange} />
+            <input id="deadline" type="text" value={props.deadline} name="deadline" placeholder='Deadline' onChange={props.handleDeadlineChange} />
+            <select id="status" value={props.status} onChange={props.handleStatusChange}>
                 <option value="status">Status</option>
                 <option value="In progress">In progress</option>
                 <option value="Not started">Not started</option>
                 <option value="Done">Done</option>
             </select>
-            <input type="button" value="Add" onClick={props.handleAddButton} />
-            <input type="button" value="Cancel" onClick={() => props.setIsFormOpen(false)} />
+            <input id="add" type="button" value="Add" onClick={props.handleAddButton} />
+            <input id="cancel" type="button" value="Cancel" onClick={() => props.setIsFormOpen(false)} />
         </form>
     )
 }
