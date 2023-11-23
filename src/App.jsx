@@ -7,11 +7,11 @@ import Button from "@mui/material/Button";
 function App() {
 	// set up states
 	const [isFormOpen, setIsFormOpen] = useState(false);
-	const [title, setTitle] = useState("");
-	const [deadline, setDeadline] = useState("");
-	const [status, setStatus] = useState("status");
-	const [todoList, setTodoList] = useState([]);
-	const [editMode, setEditMode] = useState(false);
+	const [title, setTitle] = useState("")
+	const [deadline, setDeadline] = useState("")
+	const [status, setStatus] = useState("status")
+	const [todoList, setTodoList] = useState([])
+	const [editMode, setEditMode] = useState(false)
     const [id, setId] = useState(0)
     const [updateId, setUpdateId] = useState(null)
 
@@ -20,7 +20,6 @@ function App() {
 		const newTodo = { id: id, title: title, deadline: deadline, status: status };
 		setTodoList([...todoList, newTodo]);
         setId(id+1)
-
 		handleClearForm()
 	}
 
@@ -46,18 +45,19 @@ function App() {
 
 	function switchToEditMode(todo) {
         setEditMode(true)
+        setIsFormOpen(true)
+
         setTitle(todo.title)
         setDeadline(todo.deadline)
         setStatus(todo.status)
-        setIsFormOpen(true)
+        setUpdateId(todo.id)
     }
 
-    function handleEdit(updateTodo) {
-        const foundIndex = todoList.findIndex(todo => todo.id === updateTodo.id)
-        const newlyEditedTodo = { id: id, title: title, deadline: deadline, status: status };
-        todoList.splice(foundIndex-1, 1, newlyEditedTodo)
+    function handleEdit() {
+        const foundIndex = todoList.findIndex(todo => todo.id === updateId)
+        const newlyEditedTodo = { id: updateId, title: title, deadline: deadline, status: status };
+        todoList.splice(foundIndex, 1, newlyEditedTodo)     // replace {todo} at position {foundIndex} with {newlyEditedTodo}
         handleClearForm()
-        console.log(todoList)
     }
 
 	return (
