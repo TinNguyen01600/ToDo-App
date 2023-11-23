@@ -2,8 +2,8 @@
 //     {title, status, deadline,
 //     handleTitleChange,
 //     handleDeadlineChange,
-//     handleStatusChange, 
-//     handleAddButton, 
+//     handleStatusChange,
+//     handleAddButton,
 //     setIsFormOpen}
 // ) {
 //     return (
@@ -22,19 +22,60 @@
 //     )
 // }
 
+import Button from "@mui/material/Button";
+
 export default function Form(props) {
-    return (
-        <form id="todo-form">
-            <input id="title" type="text" value={props.title} name="title" placeholder='Title' onChange={props.handleTitleChange} />
-            <input id="deadline" type="text" value={props.deadline} name="deadline" placeholder='Deadline' onChange={props.handleDeadlineChange} />
-            <select id="status" value={props.status} onChange={props.handleStatusChange}>
-                <option value="status">Status</option>
-                <option value="In progress">In progress</option>
-                <option value="Not started">Not started</option>
-                <option value="Done">Done</option>
-            </select>
-            <input id="add" type="button" value="Add" onClick={props.handleAddButton} />
-            <input id="cancel" type="button" value="Cancel" onClick={() => props.setIsFormOpen(false)} />
-        </form>
-    )
+	return (
+		<form id="todo-form">
+			<label id="label" htmlFor="">
+				Add new todo
+			</label>
+			<input
+				id="title"
+				type="text"
+				value={props.title}
+				name="title"
+				placeholder="Title"
+				onChange={props.handleTitleChange}
+			/>
+			<input
+				id="deadline"
+				type="text"
+				value={props.deadline}
+				name="deadline"
+				placeholder="Deadline"
+				onChange={props.handleDeadlineChange}
+			/>
+			<select
+				id="status"
+				value={props.status}
+				onChange={props.handleStatusChange}
+			>
+				<option value="status">Status</option>
+				<option value="In progress">In progress</option>
+				<option value="Not started">Not started</option>
+				<option value="Done">Done</option>
+			</select>
+			<div id="btn-ctn">
+				<Button
+					size="small"
+					variant="contained"
+					id="add"
+					value="Add"
+					onClick={props.handleAddButton}
+				>
+					Add a new todo
+				</Button>
+				<Button
+					size="small"
+					variant="outlined"
+					id="cancel"
+					value="cancel"
+					onClick={() => props.setIsFormOpen(false)}
+				>
+					Cancel
+				</Button>
+			</div>
+		</form>
+	);
 }

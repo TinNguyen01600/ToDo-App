@@ -59,11 +59,11 @@ function App() {
 				/>
 			)}
 			{todoList.length > 0 && (
-				<div>
+				<ul>
 					{todoList.map((todo) => (
 						<Todo todo={todo} key={todo.title} />
 					))}
-				</div>
+				</ul>
 			)}
 		</>
 	);

@@ -1,8 +1,8 @@
 export default function Todo(props) {
 	const { title, deadline, status } = props.todo;
 	return (
-		<span>
+		<li>
 			{title} {deadline} {status}
-		</span>
+		</li>
 	);
 }

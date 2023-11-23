@@ -1,0 +1,29 @@
+#todo-form {
+    border: 1px solid black;
+    width: 400px;
+    /* height: 240px; */
+    background-color: gainsboro;
+    margin-top: 15px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#title, #deadline, #status {
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+#label {
+    margin: 0px;
+}
+
+#btn-ctn {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
