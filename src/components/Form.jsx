@@ -62,7 +62,7 @@ export default function Form(props) {
 					variant="contained"
 					id="add"
 					value="Add"
-					onClick={props.handleAddButton}
+					onClick={props.editMode ? props.handleEdit : props.handleAddButton}
 				>
 					{props.editMode?'Update':'Add new todo'}
 				</Button>
@@ -71,7 +71,7 @@ export default function Form(props) {
 					variant="outlined"
 					id="cancel"
 					value="cancel"
-					onClick={() => props.setIsFormOpen(false)}
+					onClick={props.handleClearForm}
 				>
 					Cancel
 				</Button>

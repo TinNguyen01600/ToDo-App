@@ -12,17 +12,16 @@ function App() {
 	const [status, setStatus] = useState("status");
 	const [todoList, setTodoList] = useState([]);
 	const [editMode, setEditMode] = useState(false);
+    const [id, setId] = useState(0)
+    const [updateId, setUpdateId] = useState(null)
 
 	// functions to handle events
 	function handleAddButton() {
-		setIsFormOpen(false);
-
-		const newTodo = { title: title, deadline: deadline, status: status };
+		const newTodo = { id: id, title: title, deadline: deadline, status: status };
 		setTodoList([...todoList, newTodo]);
+        setId(id+1)
 
-		setTitle("");
-		setDeadline("");
-		setStatus("status");
+		handleClearForm()
 	}
 
 	function handleTitleChange(event) {
@@ -37,12 +36,28 @@ function App() {
 		setStatus(event.target.value);
 	}
 
+    function handleClearForm() {
+        setIsFormOpen(false)
+        setEditMode(false)
+        setTitle("");
+		setDeadline("");
+		setStatus("status");
+    }
+
 	function switchToEditMode(todo) {
         setEditMode(true)
         setTitle(todo.title)
         setDeadline(todo.deadline)
         setStatus(todo.status)
         setIsFormOpen(true)
+    }
+
+    function handleEdit(updateTodo) {
+        const foundIndex = todoList.findIndex(todo => todo.id === updateTodo.id)
+        const newlyEditedTodo = { id: id, title: title, deadline: deadline, status: status };
+        todoList.splice(foundIndex-1, 1, newlyEditedTodo)
+        handleClearForm()
+        console.log(todoList)
     }
 
 	return (
@@ -64,8 +79,9 @@ function App() {
 					handleDeadlineChange={handleDeadlineChange}
 					handleStatusChange={handleStatusChange}
 					handleAddButton={handleAddButton}
-					setIsFormOpen={setIsFormOpen}
+					handleClearForm={handleClearForm}
                     editMode={editMode}
+                    handleEdit={handleEdit}
 				/>
 			)}
 			{todoList.length > 0 && (
