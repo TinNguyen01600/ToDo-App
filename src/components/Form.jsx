@@ -64,7 +64,7 @@ export default function Form(props) {
 					value="Add"
 					onClick={props.handleAddButton}
 				>
-					Add a new todo
+					{props.editMode?'Update':'Add new todo'}
 				</Button>
 				<Button
 					size="small"

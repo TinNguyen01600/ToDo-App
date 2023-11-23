@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
-import Todo from "./components/Todo";
+import TodoItem from "./components/TodoItem";
 import Button from "@mui/material/Button";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
 	const [deadline, setDeadline] = useState("");
 	const [status, setStatus] = useState("status");
 	const [todoList, setTodoList] = useState([]);
+	const [editMode, setEditMode] = useState(false);
 
 	// functions to handle events
 	function handleAddButton() {
@@ -36,6 +37,14 @@ function App() {
 		setStatus(event.target.value);
 	}
 
+	function switchToEditMode(todo) {
+        setEditMode(true)
+        setTitle(todo.title)
+        setDeadline(todo.deadline)
+        setStatus(todo.status)
+        setIsFormOpen(true)
+    }
+
 	return (
 		<>
 			<Button
@@ -56,12 +65,17 @@ function App() {
 					handleStatusChange={handleStatusChange}
 					handleAddButton={handleAddButton}
 					setIsFormOpen={setIsFormOpen}
+                    editMode={editMode}
 				/>
 			)}
 			{todoList.length > 0 && (
 				<ul>
 					{todoList.map((todo) => (
-						<Todo todo={todo} key={todo.title} />
+						<TodoItem
+							todo={todo}
+							key={todo.title}
+							switchToEditMode={switchToEditMode}
+						/>
 					))}
 				</ul>
 			)}

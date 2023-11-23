@@ -1,7 +1,7 @@
-export default function Todo(props) {
+export default function TodoItem(props) {
 	const { title, deadline, status } = props.todo;
 	return (
-		<li>
+		<li onClick={() => props.switchToEditMode(props.todo)}>
 			{title} {deadline} {status}
 		</li>
 	);
