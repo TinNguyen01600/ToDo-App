@@ -1,28 +1,9 @@
-// export default function Form(
-//     {title, status, deadline,
-//     handleTitleChange,
-//     handleDeadlineChange,
-//     handleStatusChange,
-//     handleAddButton,
-//     setIsFormOpen}
-// ) {
-//     return (
-//         <form id="todo-form">
-//             <input type="text" value={title} name="title" placeholder='Title' onChange={handleTitleChange} />
-//             <input type="text" value={deadline} name="deadline" placeholder='Deadline' onChange={handleDeadlineChange} />
-//             <select value={status} onChange={handleStatusChange}>
-//                 <option value="status">Status</option>
-//                 <option value="In progress">In progress</option>
-//                 <option value="Not started">Not started</option>
-//                 <option value="Done">Done</option>
-//             </select>
-//             <input type="button" value="Add" onClick={handleAddButton} />
-//             <input type="button" value="Cancel" onClick={() => setIsFormOpen(false)} />
-//         </form>
-//     )
-// }
-
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 export default function Form(props) {
 	return (
@@ -30,41 +11,52 @@ export default function Form(props) {
 			<label id="label" htmlFor="">
 				Add new todo
 			</label>
-			<input
+			<TextField
+				size="small"
+				label="Title"
+				variant="outlined"
+				sx={{ backgroundColor: "white" }}
 				id="title"
-				type="text"
 				value={props.title}
 				name="title"
-				placeholder="Title"
 				onChange={props.handleTitleChange}
 			/>
-			<input
+			<TextField
+				size="small"
+				label="Deadline"
+				variant="outlined"
+				sx={{ backgroundColor: "white" }}
 				id="deadline"
-				type="text"
 				value={props.deadline}
 				name="deadline"
-				placeholder="Deadline"
 				onChange={props.handleDeadlineChange}
 			/>
-			<select
-				id="status"
-				value={props.status}
-				onChange={props.handleStatusChange}
-			>
-				<option value="status">Status</option>
-				<option value="In progress">In progress</option>
-				<option value="Not started">Not started</option>
-				<option value="Done">Done</option>
-			</select>
+			<FormControl sx={{ backgroundColor: "white" }} size="small">
+				<InputLabel id="demo-simple-select-label">Status</InputLabel>
+				<Select
+					id="status"
+					value={props.status}
+					label="status"
+					onChange={props.handleStatusChange}
+				>
+					<MenuItem value="In progress">In progress</MenuItem>
+					<MenuItem value="Not started">Not started</MenuItem>
+					<MenuItem value="Done">Done</MenuItem>
+				</Select>
+			</FormControl>
 			<div id="btn-ctn">
 				<Button
 					size="small"
 					variant="contained"
 					id="add"
 					value="Add"
-					onClick={props.editMode ? props.handleEdit : props.handleAddButton}
+					onClick={
+						props.editMode
+							? props.handleEdit
+							: props.handleAddButton
+					}
 				>
-					{props.editMode?'Update':'Add new todo'}
+					{props.editMode ? "Update" : "Add new todo"}
 				</Button>
 				<Button
 					size="small"

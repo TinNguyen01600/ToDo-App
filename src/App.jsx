@@ -9,7 +9,7 @@ function App() {
 	const [isFormOpen, setIsFormOpen] = useState(false);
 	const [title, setTitle] = useState("")
 	const [deadline, setDeadline] = useState("")
-	const [status, setStatus] = useState("status")
+	const [status, setStatus] = useState("")
 	const [todoList, setTodoList] = useState([])
 	const [editMode, setEditMode] = useState(false)
     const [id, setId] = useState(0)
@@ -40,7 +40,7 @@ function App() {
         setEditMode(false)
         setTitle("");
 		setDeadline("");
-		setStatus("status");
+		setStatus("");
     }
 
 	function switchToEditMode(todo) {
