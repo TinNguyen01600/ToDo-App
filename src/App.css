@@ -20,3 +20,11 @@
     flex-direction: row-reverse;
     gap: 10px;
 }
+
+#todo-item {
+    margin: 20px;
+    width: 500px;
+    background-color: aliceblue;
+
+    display: block;
+}

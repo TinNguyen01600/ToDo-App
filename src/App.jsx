@@ -89,7 +89,7 @@ function App() {
 					{todoList.map((todo) => (
 						<TodoItem
 							todo={todo}
-							key={todo.title}
+							key={todo.id}
 							switchToEditMode={switchToEditMode}
 						/>
 					))}
