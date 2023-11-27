@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import TodoItem from "./components/TodoItem";
+import StatusIndicator from "./components/StatusIndicator";
 import Button from "@mui/material/Button";
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
 					))}
 				</ul>
 			)}
+            <StatusIndicator />
 		</>
 	);
 }
